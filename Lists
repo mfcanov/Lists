@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+float total (float number[], int total_num){
+  float sum=0.0;
+  for(int i=0;i<total_num; i++){
+    sum+=number[i];
+  }
+  return sum;
+}
+
+float promedio(float number[],int total_num){
+  float sum=0.0,prom=0.0;
+  for (int i=0; i<total_num;i++){
+    sum+=number[i];
+  }
+  prom=sum/total_num;
+  return prom;
+}
+
+float deviation_std(float number[], int total_num){
+  float variation= 0.0, sum=0.0,prom=0.0,deviation=0.0;
+  for (int i=0;i<total_num;i++){
+    sum+=number[i];
+  }
+  prom=sum/total_num;
+  for(int i=0;i<total_num;i++){
+    variation=variation+pow((number[i]-prom),2);
+  }
+  deviation=sqrt(variation/total_num);
+  return deviation;
+}
+
+int main(){
+  const int total_num=10;
+  float x[total_num];
+  for (int i=0;i<total_num;i++){
+    cout<<"Introduce the number: ";
+    cin>>x[i];
+  }
+  float sum=total (x,10);
+  float prom= promedio(x,10);
+  float dev=deviation_std(x,10);
+  cout<<"The sum of the numbers is: "<< sum << endl;
+  cout<<"The average of the numbers is: "<<prom<<endl;
+  cout<<"The standard deviation is: "<<dev<<endl;
+}
